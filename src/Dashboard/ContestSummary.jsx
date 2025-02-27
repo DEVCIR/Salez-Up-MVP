@@ -141,20 +141,13 @@ const ContestSummary = () => {
     );
 
     const contestants = [
-        { name: 'Sarah Smith', level: 'Bronze', points: 200, money: 150, avatar: '/images/dashboard_img1.png', badgeColor: '/images/Badges/badge_bronze.png' },
-        { name: 'Anujaa Kumar', level: 'Platinum', points: 150, money: 100, avatar: '/images/dashboard_img2.png', badgeColor: '/images/Badges/badge_platinium.png' },
-        { name: 'Fernanda Celde', level: 'Unicorn', points: 75, money: 50, avatar: '/images/dashboard_img3.png', badgeColor: '/images/Badges/badge_unicorn.png' },
+        { name: 'Charlie Green', level: 'Bronze', points: 200, money: 150, avatar: '/images/agent2.png', badgeColor: '/images/Badges/badge_bronze.png' },
+        { name: 'Sam Smith', level: 'Platinum', points: 150, money: 100, avatar: '/images/agent1.png', badgeColor: '/images/Badges/badge_platinium.png' }
     ];
 
     const leaderboardData = [
-        { name: 'Sarah Smith', score: 200, image: '/images/dashboard_img1.png', badge: '/images/Badges/badge_unicorn.png' },
-        { name: 'Anujaa Kumar', score: 150, image: '/images/dashboard_img2.png', badge: '/images/Badges/badge_platinium.png' },
-        { name: 'Fernando Celde', score: 75, image: '/images/dashboard_img3.png', badge: '/images/Badges/badge_gold.png' },
-        { name: 'Pinaji Koarima', score: 74, image: '/images/dashboard_img1.png', badge: '/images/Badges/badge_silver.png' },
-        { name: 'Nava Yaghnel', score: 60, image: '/images/dashboard_img2.png', badge: '/images/Badges/badge_silver.png' },
-        { name: 'Monaki Nahans', score: 50, image: '/images/dashboard_img3.png', badge: '/images/Badges/badge_bronze.png' },
-        { name: 'Tians jdife', score: 35, image: '/images/dashboard_img2.png', badge: '/images/Badges/badge_bronze.png' },
-        { name: 'Nualiri sjahej', score: 20, image: '/images/dashboard_img1.png', badge: '/images/Badges/badge_bronze.png' },
+        { name: 'Charlie Green', score: 200, image: '/images/agent2.png', badge: '/images/Badges/badge_unicorn.png' },
+        { name: 'Sam Smith', score: 150, image: '/images/agent1.png', badge: '/images/Badges/badge_platinium.png' }
     ];
 
 
@@ -220,7 +213,7 @@ const ContestSummary = () => {
 
                     </div>
 
-                    {/* <div className="container mx-auto">
+                    <div className="container mx-auto">
 
                         <div className='flex justify-center  bg-white rounded-lg shadow-sm order-2 border-2 border-gray-100 py-8'>
                             {contestants.map((contestant, index) => (
@@ -239,7 +232,7 @@ const ContestSummary = () => {
                                     </div>
                                     <div className='flex items-center mt-1'>
                                         <img src='images/bag.png' alt='Star' className='w-6 h-6 mt-1' />
-                                        <span className='ml-2 text-base text-[#6A6A6A] font-medium'>${contestant.money}</span>
+                                        <span className='ml-2 text-base text-[#6A6A6A] font-medium'>£{contestant.money}</span>
                                     </div>
                                 </div>
                             ))}
@@ -252,7 +245,7 @@ const ContestSummary = () => {
                         </div>
 
 
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </>
