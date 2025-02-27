@@ -201,7 +201,7 @@ const ContestSummary = () => {
                             <div className="flex flex-row items-center pl-1 space-x-14 pr-1 ">
                                 <img src='/images/cashBag.png' alt='Medal' className="w-[33px] h-[41px]" />
                                 <p className="text-black text-[15px] font-normal">TOTAL PRIZES</p>
-                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold">${summary.totalPrizes}</h2>
+                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold">£{summary.totalPrizes}</h2>
                             </div>
                         </div>
 
@@ -213,7 +213,7 @@ const ContestSummary = () => {
                                 >
                                     <img src={prize.iconSrc} alt={prize.name} className="w-[39.2px] h-[30.36px]" />
                                     <p className="text-[#000000] text-[11.76px] font-normal">{prize.name}</p>
-                                    <h2 className="bg-white shadow-lg p-2 text-[#269F8B] text-lg font-semibold shadow-[#00A46C26]">${prize.amount}</h2>
+                                    <h2 className="bg-white shadow-lg p-2 text-[#269F8B] text-lg font-semibold shadow-[#00A46C26]">£{prize.amount}</h2>
                                 </div>
                             ))}
                         </div>
