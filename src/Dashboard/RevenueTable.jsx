@@ -171,8 +171,8 @@ const RevenueTable = ( barIndex ) => {
               />
               <p className="text-[#009245]">BEAUFORT GREEN</p>
             </div>
-            <div className="text-base text-[#009245]">
-              Agent Leaderboard
+            <div className="text-[12px] text-[#009245]">
+              Negotiator Leaderboard
             </div>
           </div>
           <div className="flex justify-around space-x-4">

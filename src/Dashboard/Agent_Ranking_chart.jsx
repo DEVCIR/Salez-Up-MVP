@@ -99,7 +99,7 @@ const Agent_Ranking_chart = ({ leaderboardData }) => {
             {/* Header Section */}
             <div className="flex items-center justify-between px-6">
                 {/* Heading */}
-                <h1 className=" text-xl text-[#009245]">Agent Ranking: Performance vs Actual</h1>
+                <h1 className=" text-xl text-[#009245]">Negotiator Ranking: Performance vs Actual</h1>
 
                 {/* Buttons */}
                 <div className="flex space-x-2 border rounded-2xl border-gray-300">

@@ -296,8 +296,6 @@ const Intro_Teamleader = () => {
             />
           </div>
           <p className="text-red-500 font-medium">{teamData?.leader.role}</p>
-
-          
           <p className="text-gray-700">{teamData?.leader.name}</p>
           
           {/* Vertical Line */}
