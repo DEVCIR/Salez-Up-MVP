@@ -95,7 +95,7 @@ const SalesAgent_Main_dashboard = () => {
                     <Intro />
                     <My_Commission />
                     <PerformanceTable />
-                    {/* <ContestSummary /> */}
+                    <ContestSummary />
                 </div>
 
             </div >

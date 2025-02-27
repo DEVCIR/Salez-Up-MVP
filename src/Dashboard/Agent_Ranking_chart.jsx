@@ -89,7 +89,7 @@ const Agent_Ranking_chart = ({ leaderboardData }) => {
                 />
             </div>
             <p className="ml-2 text-[#009245]">
-                ${score < 1000 ? score : parseFloat(score / 1000).toFixed(2)}{score < 1000 ? '' : 'K'}
+                {score < 1000 ? score : parseFloat(score / 1000).toFixed(2)}{score < 1000 ? '' : 'K'}
             </p>
         </div>
     );
@@ -110,7 +110,7 @@ const Agent_Ranking_chart = ({ leaderboardData }) => {
                             className={`px-3 py-1 text-sm font-medium ${activeButton === button
                                 ? "text-[#269F8B] shadow-xl"
                                 : "text-[#ABABAB]"} ${index < buttons.length - 1 ? 'border-r' : ''}`}
-                        >
+                        > 
                             {button}
                         </button>
                     ))}

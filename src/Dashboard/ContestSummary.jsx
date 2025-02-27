@@ -220,7 +220,7 @@ const ContestSummary = () => {
 
                     </div>
 
-                    <div className="container mx-auto">
+                    {/* <div className="container mx-auto">
 
                         <div className='flex justify-center  bg-white rounded-lg shadow-sm order-2 border-2 border-gray-100 py-8'>
                             {contestants.map((contestant, index) => (
@@ -252,7 +252,7 @@ const ContestSummary = () => {
                         </div>
 
 
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
