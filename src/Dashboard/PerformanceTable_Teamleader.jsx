@@ -59,19 +59,20 @@ const PerformanceTable_Teamleader = () => {
         waitForTeamId();
     }, []);
 
-    useEffect(() => {
-        const calculateAggregatedSums = () => {
-            const aggregatedData = JSON.parse(localStorage.getItem('TeamLeader Actual')) || [];
-            const sums = [];
-            aggregatedData.forEach(agent => {
-                const values = agent.aggregatedValues || [];
-                values.forEach((value, index) => {
-                    const numValue = Number(value) || 0;
-                    sums[index] = (sums[index] || 0) + numValue;
-                });
+    const calculateAggregatedSums = () => {
+        const aggregatedData = JSON.parse(localStorage.getItem('TeamLeader Actual')) || [];
+        const sums = [];
+        aggregatedData.forEach(agent => {
+            const values = agent.aggregatedValues || [];
+            values.forEach((value, index) => {
+                const numValue = Number(value) || 0;
+                sums[index] = (sums[index] || 0) + numValue;
             });
-            setAggregatedSums(sums);
-        };
+        });
+        setAggregatedSums(sums);
+    };
+    
+    useEffect(() => {
         setAllTargets(localStorage.getItem('TotalTargetAgents')?.split(',') || []);
         console.log('Target: ', allTargets)
         calculateAggregatedSums();
