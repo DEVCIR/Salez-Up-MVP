@@ -47,7 +47,8 @@ const PerformanceTable_Teamleader = () => {
                         .then(data => {
                             setTeamLeader(data.team_and_team_leader);
                             setKpiData(JSON.parse(data.team_and_team_leader.kpi_data));
-                            console.log("Performance: ", JSON.parse(data.team_and_team_leader.kpi_data));
+                            // console.log("Performance: ", JSON.parse(data.team_and_team_leader.kpi_data).kpiData);
+                            localStorage.setItem("Performance_Table", JSON.stringify(JSON.parse(data.team_and_team_leader.kpi_data).kpiData))
                         })
                         .catch(err => console.error(err));
                 }
