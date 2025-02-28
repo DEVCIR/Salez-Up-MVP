@@ -71,7 +71,7 @@ const PerformanceTable_Teamleader = () => {
         });
         setAggregatedSums(sums);
     };
-    
+
     useEffect(() => {
         setAllTargets(localStorage.getItem('TotalTargetAgents')?.split(',') || []);
         console.log('Target: ', allTargets)
@@ -167,9 +167,9 @@ const PerformanceTable_Teamleader = () => {
     const getFormattedValue = (kpi, value) => {
         switch (kpi) {
             case 'Sales Revenue':
-                return `${value}`;
+                return `£${value}`;
             case 'Lettings Revenue':
-                return `${value}`;
+                return `£${value}`;
             default:
                 return `${value}`;
         }
