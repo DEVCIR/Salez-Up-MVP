@@ -51,8 +51,8 @@ const Intro = () => {
     const commission_Agent = localStorage.getItem('commission_salesagent');
     let currentCommission = localStorage.getItem('CurrentCommission');
     let rankValue = localStorage.getItem('Rank');
+    let lifeCommission = localStorage.getItem('LifeTimeCommission');
 
-    setCommission(commission_Agent);
 
     const contest_data = localStorage.getItem('contestSummary');
     if (contest_data) {
@@ -65,6 +65,7 @@ const Intro = () => {
       // Fetch CurrentCommission every second until a valid value is found
       const intervalId = setInterval(() => {
         currentCommission = localStorage.getItem('CurrentCommission');
+        lifeCommission = localStorage.getItem('LifeTimeCommission');
         rankValue = localStorage.getItem('Rank');
         if (currentCommission && rankValue) {
           clearInterval(intervalId); // Stop fetching once a valid value is found
@@ -75,6 +76,7 @@ const Intro = () => {
             monthStatsValue: currentCommission,
           });
           setRank(rankValue);
+          setCommission(lifeCommission);
         }
       }, 1000);
 

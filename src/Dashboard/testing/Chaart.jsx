@@ -81,18 +81,23 @@ const Chart = () => {
         const formattedMonth = monthMapping[month.toLowerCase()];
 
         if (formattedMonth) {
+          let totalAmount = 0; // Initialize total amount
           const updatedData = storedData.map((item, index) => {
             if (item.month === formattedMonth) {
+              totalAmount += parseFloat(value); // Add the found month value
               return { ...item, amount: parseFloat(value) };
             } else if (index > storedData.findIndex(i => i.month === formattedMonth)) {
               return null;
             }
+            totalAmount += item.amount; // Accumulate amount
             return item;
           }).filter(item => item !== null);
           
           const lastMonthIndex = storedData.findIndex(i => i.month === formattedMonth) - 1;
           const lastMonthCom = lastMonthIndex >= 0 ? storedData[lastMonthIndex].amount : null;
           console.log("Last Month Amount => ", lastMonthCom);
+          console.log("Total Amount till found month => ", totalAmount); // Log total amount
+          localStorage.setItem("LifeTimeCommission", totalAmount);
           localStorage.setItem("lastMonthComm", lastMonthCom);
           console.log("DATA => ", updatedData);
           setChartData(updatedData);

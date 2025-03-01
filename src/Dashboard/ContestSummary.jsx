@@ -231,7 +231,7 @@ const ContestSummary = () => {
                                 Week
                             </button>
                             <button
-                                onClick={() => handleButtonClick('Month')}
+                                onClick={() => handleButtonClick('Monthly')}
                                 className={`px-6 py-1 text-sm font-medium border border-gray-300 bg-white ${selectedPeriod === 'Monthly' ? 'text-[#269F8B] rounded-l shadow-xl' : 'text-[#ABABAB]'}`}
                             >
                                 Month
