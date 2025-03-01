@@ -164,37 +164,47 @@ const ContestSummary = () => {
     );
 
     const contestants = [
-        { name: 'Charlie Green', level: 'Bronze', points: 200, money: 150, avatar: '/images/agent2.png', badgeColor: '/images/Badges/badge_bronze.png' },
+        { name: 'Charlie Green', level: 'Bronze', points: 10, money: 150, avatar: '/images/agent2.png', badgeColor: '/images/Badges/badge_bronze.png' },
         { name: 'Sam Smith', level: 'Platinum', points: 150, money: 100, avatar: '/images/agent1.png', badgeColor: '/images/Badges/badge_platinium.png' }
     ];
 
     const userFName = localStorage.getItem('userFName');
     const currentContestant = contestants.find(contestant => contestant.name === userFName);
 
-    if (currentContestant && summary) {
-        currentContestant.points = summary.points;
-        currentContestant.money = summary.totalPrizes;
-
-        console.log("Current Contestant = ", currentContestant)
-
+    // Function to update contestant's level and badgeColor based on points
+    const updateContestantTier = (contestant) => {
         let tierIndex = -1; // Initialize tierIndex to -1
-        if (currentContestant.points >= 0 && currentContestant.points <= 100) {
+        if (contestant.points >= 0 && contestant.points <= 100) {
             tierIndex = 0; // Tier 0 for points between 0-100
-        } else if (currentContestant.points >= 101 && currentContestant.points <= 300) {
+        } else if (contestant.points >= 101 && contestant.points <= 300) {
             tierIndex = 1; // Tier 1 for points between 101-300
-        } else if (currentContestant.points >= 301 && currentContestant.points <= 500) {
+        } else if (contestant.points >= 301 && contestant.points <= 500) {
             tierIndex = 2; // Tier 2 for points between 301-500
-        } else if (currentContestant.points >= 501 && currentContestant.points <= 700) {
+        } else if (contestant.points >= 501 && contestant.points <= 700) {
             tierIndex = 3; // Tier 3 for points between 501-700
-        } else if (currentContestant.points >= 701 && currentContestant.points <= 1000) {
+        } else if (contestant.points >= 701 && contestant.points <= 1000) {
             tierIndex = 4; // Tier 4 for points between 701-1000
         }
 
         if (tierIndex !== -1) {
-            currentContestant.level = tiers[tierIndex].name; // Set level based on tier
-            currentContestant.badgeColor = tiers[tierIndex].icon; // Set badgeColor based on tier icon
+            contestant.level = tiers[tierIndex].name; // Set level based on tier
+            contestant.badgeColor = tiers[tierIndex].icon; // Set badgeColor based on tier icon
         }
     }
+
+    // Update current contestant
+    if (currentContestant && summary) {
+        currentContestant.points = summary.points;
+        currentContestant.money = summary.totalPrizes;
+
+        console.log("Current Contestant = ", currentContestant);
+        updateContestantTier(currentContestant); // Update tier for current contestant
+    }
+
+    // Update badgeColor for all contestants
+    contestants.forEach(contestant => {
+        updateContestantTier(contestant); // Update tier for each contestant
+    });
 
     const leaderboardData = [
         { name: 'Charlie Green', score: 800, image: '/images/agent2.png', badge: '/images/Badges/badge_unicorn.png' },
@@ -308,5 +318,4 @@ const ContestSummary = () => {
 
     )
 }
-
 export default ContestSummary;
