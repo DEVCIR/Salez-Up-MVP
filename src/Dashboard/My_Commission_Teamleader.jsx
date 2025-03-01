@@ -15,7 +15,9 @@ const My_Commission_Teamleader = () => {
     const [forecast, setForecast] = useState()
     const [lastMonthCommission, setLastMonthCommission] = useState(0);
     const [percentageChange, setPercentageChange] = useState(0);
-    const buttons = ["Current Month", "Custom"];
+    const buttons = ["Current Month",
+        //  "Custom"
+    ];
     const [campaignImage, setCampaignImage] = useState(null);
 
     const handleButtonClick = (label) => {

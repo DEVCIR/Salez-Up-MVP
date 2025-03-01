@@ -28,7 +28,8 @@ const My_Commission = () => {
     const [data, setData] = useState(contributionData);
     const buttons = ["Current Month",
         //  "Quarter", "Week",
-        "Custom"];
+        // "Custom"
+    ];
 
     const [lastMonthCommission, setLastMonthCommission] = useState(0);
     const [percentageChange, setPercentageChange] = useState(0);
