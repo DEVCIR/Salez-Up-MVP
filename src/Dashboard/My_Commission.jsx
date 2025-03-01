@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretUp, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp, faLock, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Actual_Vs_Target_logic from "./testing/Actual_Vs_Target_logic";
@@ -157,6 +157,29 @@ const My_Commission = () => {
         }
     }, [activeButton, commission, contestData, mainAgent, agents, totalCommission]);
 
+    useEffect(() => {
+        const fetchLastMonthCommission = () => {
+            const storedCommission = localStorage.getItem('lastMonthComm');
+            if (storedCommission) {
+                setLastMonthCommission(parseFloat(storedCommission));
+                clearInterval(intervalId); // Stop fetching once found
+            }
+        };
+
+        const intervalId = setInterval(fetchLastMonthCommission, 1000); // Fetch every 1 second
+
+        return () => clearInterval(intervalId); // Cleanup on component unmount
+    }, []);
+
+    useEffect(() => {
+        if (lastMonthCommission > 0) {
+            const difference = totalCommission - lastMonthCommission;
+            const percentageDifference = (difference / lastMonthCommission) * 100;
+            setPercentageChange(percentageDifference.toFixed(2)); // Set percentage change
+        } else {
+            setPercentageChange(0); // If last month commission is 0, set percentage change to 0
+        }
+    }, [totalCommission, lastMonthCommission]);
 
     const getLock = (gatekeeperTargetDatas) => {
         if (gatekeeperTargetDatas) {
@@ -218,13 +241,22 @@ const My_Commission = () => {
                             <div className="flex justify-between items-center mt-4 ">
                                 <h2 className="text-2xl text-[#009245]">Total Commission</h2>
                                 <div className="flex items-center">
-                                    <FontAwesomeIcon icon={faCaretUp} className="text-[#009245]" />
-                                    <span className="text-[#009245] text-2xl font-semibold ml-2">{percentageChange}%</span>
+                                    {percentageChange < 0 ? (
+                                        <>
+                                            <FontAwesomeIcon icon={faCaretDown} className="text-red-500" />
+                                            <span className="text-red-500 text-2xl font-semibold ml-2">{percentageChange}%</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <FontAwesomeIcon icon={faCaretUp} className="text-[#009245]" />
+                                            <span className="text-[#009245] text-2xl font-semibold ml-2">{percentageChange}%</span>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             <div className="flex justify-between items-center mt-4">
                                 <p className="text-3xl font-semibold text-[#1E8675]">{currency}{totalCommission}</p>
-                                <p className="text-mm text-[#5F5E5E]">vs {currency}{lastMonthCommission} last month</p>
+                                <p className="text-mm text-[#5F5E5E]">vs {currency}{totalCommission - lastMonthCommission} last month</p>
                             </div>
                             <div className="flex justify-evenly mt-12">
                                 {buttons.map((label) => (
