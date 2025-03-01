@@ -14,7 +14,7 @@ const My_Commission = () => {
     const [agents, setAgents] = useState([]);
     const [mainAgent, setMainAgent] = useState({})
     const [aggregatedData, setAggregatedData] = useState(JSON.parse(localStorage.getItem('aggregated data')));
-    const [contestData, setContestData] = useState(JSON.parse(localStorage.getItem('contestSummary')))
+    const [contestData, setContestData] = useState(JSON.parse(localStorage.getItem('contestSummary')) || { totalPrizes: 0 });
     const [totalCommission, setTotalCommission] = useState((parseFloat(commission) + parseFloat(contestData.totalPrizes) || 0));
     const [gatekeeperTargetData, setGatekeeperTargetData] = useState(null);
     const [showLock, setShowLock] = useState(false);
@@ -111,7 +111,7 @@ const My_Commission = () => {
         };
 
         fetchAgents();
-        setTotalCommission((parseFloat(commission) + parseFloat(contestData.totalPrizes) || 0));
+        setTotalCommission((parseFloat(commission) + parseFloat(contestData.totalPrizes || 0) || 0));
         localStorage.setItem("CurrentCommission", (commission))
     }, [aggregatedData, allowedButton]);
 

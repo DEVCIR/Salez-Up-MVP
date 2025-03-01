@@ -201,6 +201,11 @@ const ContestSummary = () => {
         { name: 'Sam Smith', score: 150, image: '/images/agent1.png', badge: '/images/Badges/badge_platinium.png' }
     ];
 
+    // Ensure summary is not null before accessing its properties
+    const contests = summary?.contests || 0; // Fallback to 0 if null
+    const points = summary?.points || 0; // Fallback to 0 if null
+    const totalPrizes = summary?.totalPrizes || 0; // Fallback to 0 if null
+    const prizes = summary?.prizes || []; // Fallback to an empty array if null
 
     return (
         <>
@@ -235,22 +240,22 @@ const ContestSummary = () => {
                             <div className="flex flex-row items-center pl-1 space-x-14 pr-1 border-r-4 border-[#009245]/5">
                                 <img src='/images/medals.png' alt='Medal' className="w-[23px] h-[50.18px]" />
                                 <p className="text-black text-[15px] font-normal">CONTESTS</p>
-                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold ">{summary.contests}</h2>
+                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold ">{contests}</h2>
                             </div>
                             <div className="flex flex-row items-center pl-1 space-x-14 pr-1 border-r-4 border-[#009245]/5">
                                 <img src='/images/stars.png' alt='Medal' className="w-[33px] h-[30.7px]" />
                                 <p className="text-black text-[15px] font-normal">POINTS</p>
-                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold">{summary.points}</h2>
+                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold">{points}</h2>
                             </div>
                             <div className="flex flex-row items-center pl-1 space-x-14 pr-1 ">
                                 <img src='/images/cashBag.png' alt='Medal' className="w-[33px] h-[41px]" />
                                 <p className="text-black text-[15px] font-normal">TOTAL PRIZES</p>
-                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold">£{summary.totalPrizes}</h2>
+                                <h2 className="text-white bg-themeGreen px-4 py-[10px] rounded-xl text-xl font-semibold">£{totalPrizes}</h2>
                             </div>
                         </div>
 
                         <div className="flex p-1">
-                            {summary.prizes.map((prize, index) => (
+                            {prizes.map((prize, index) => (
                                 <div
                                     key={index}
                                     className="w-full p-4 flex items-center space-x-4 bg-white shadow-md"

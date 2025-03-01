@@ -6,7 +6,7 @@ const Intro = () => {
   const [commission, setCommission] = useState('');
   const [fullName, setFullName] = useState('');
   const [firstName, setFirstName] = useState('');
-  const [badge, setBadge] = useState('/images/Badges/badge_bronze.png'); 
+  const [badge, setBadge] = useState('/images/Badges/badge_bronze.png');
   const [badgeColor, setBadgeColor] = useState('linear-gradient(to right, #5f4114, #c67e3a)');
   const [borderColor, setBorderColor] = useState('#5f4114');
   const [data, setData] = useState({
@@ -50,6 +50,7 @@ const Intro = () => {
     }
     const commission_Agent = localStorage.getItem('commission_salesagent');
     let currentCommission = localStorage.getItem('CurrentCommission');
+    let rankValue = localStorage.getItem('Rank');
 
     setCommission(commission_Agent);
 
@@ -64,7 +65,8 @@ const Intro = () => {
       // Fetch CurrentCommission every second until a valid value is found
       const intervalId = setInterval(() => {
         currentCommission = localStorage.getItem('CurrentCommission');
-        if (currentCommission) {
+        rankValue = localStorage.getItem('Rank');
+        if (currentCommission && rankValue) {
           clearInterval(intervalId); // Stop fetching once a valid value is found
           setData({
             points: points,
@@ -72,9 +74,10 @@ const Intro = () => {
             timeStatsValue: parsedData.timeStats?.value || '',
             monthStatsValue: currentCommission,
           });
+          setRank(rankValue);
         }
       }, 1000);
-      
+
       // Update badge based on points
       const currentTier = tiers.find(
         (tier) => points >= tier.range[0] && points <= tier.range[1]
@@ -92,9 +95,6 @@ const Intro = () => {
         monthStatsValue: '',
       });
     }
-
-    const rankValue = localStorage.getItem('Rank');
-    setRank(rankValue ? rankValue : 0);
   };
 
   useEffect(() => {
@@ -139,15 +139,15 @@ const Intro = () => {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
               {/* Profile Image Container */}
               <div className="relative">
-              <img
-        src={image || defaultImage}
-        alt="Profile"
-        className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-full object-cover shadow-sm"
-        onError={(e) => {
-          console.error("Error loading image");
-          e.target.src = defaultImage;
-        }}
-      />
+                <img
+                  src={image || defaultImage}
+                  alt="Profile"
+                  className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-full object-cover shadow-sm"
+                  onError={(e) => {
+                    console.error("Error loading image");
+                    e.target.src = defaultImage;
+                  }}
+                />
                 {/* Badge */}
                 <div className="absolute -right-4 top-3/4 transform -translate-y-1/2 w-[40px] h-[40px] md:w-[60px] md:h-[60px]">
                   <img
