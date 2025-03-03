@@ -44,8 +44,9 @@ const My_Commission = () => {
         // const commission_Agent = localStorage.getItem('commission_salesagent');
         // setCommission(commission_Agent);
         const performanceTable = JSON.parse(localStorage.getItem('Performace Table')) || [];
+        console.log("Performance Table", performanceTable)
         const totalCommission = performanceTable.reduce((sum, item) => {
-            const commissionValue = parseFloat(item.commission.replace('$', '')) || 0;
+            const commissionValue = ((item.actual/item.target) * (parseFloat(item.commission.replace('$', '')))) || 0;
             return sum + commissionValue;
         }, 0);
         setCommission((totalCommission).toFixed(2));
