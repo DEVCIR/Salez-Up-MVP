@@ -216,7 +216,7 @@ const PerformanceTable = () => {
                                                     className={`px-3 py-1 text-sm font-medium ${view === kpi.id ? 'text-[#269F8B] shadow-lg' : 'text-[#ABABAB] hover:text-[#269F8B] hover:shadow-lg'
                                                         } border border-gray-300 bg-white whitespace-nowrap transition-all duration-200`}
                                                     onClick={() => handleViewChange(kpi.id)}
-                                                >-- 
+                                                >
                                                     {kpi.label}
                                                 </button>
                                             ))}
