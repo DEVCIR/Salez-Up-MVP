@@ -256,8 +256,8 @@ const My_Commission = () => {
                                 </div>
                             </div>
                             <div className="flex justify-between items-center mt-4">
-                                <p className="text-3xl font-semibold text-[#1E8675]">{currency}{totalCommission}</p>
-                                <p className="text-mm text-[#5F5E5E]">vs {totalCommission - lastMonthCommission < 0 ? '-' + currency : currency}{Math.abs(totalCommission - lastMonthCommission)} last month</p>
+                                <p className="text-3xl font-semibold text-[#1E8675]">{currency}{parseFloat(totalCommission).toFixed(2)}</p>
+                                <p className="text-mm text-[#5F5E5E]">vs {totalCommission - lastMonthCommission < 0 ? '-' + currency : currency}{Math.abs((totalCommission - lastMonthCommission).toFixed(2))} last month</p>
                             </div>
                             <div className="flex justify-start mt-12">
                                 {buttons.map((label) => (
