@@ -5,6 +5,7 @@ import UnitsTable from './UnitsTable';
 import ConversionTable from './ConversionTable';
 import DialsTable from './DialsTable';
 import ProductivityTable from './ProductivityTable';
+import PoundSymbol from '../components/PoundSymbol';
 
 const PerformanceTable_Teamleader = () => {
     const [teamLeader, setTeamLeader] = useState(null);
@@ -166,9 +167,9 @@ const PerformanceTable_Teamleader = () => {
     const getFormattedValue = (kpi, value) => {
         switch (kpi) {
             case 'Sales Revenue':
-                return `£${value}`;
+                return <><PoundSymbol />{value}</>;
             case 'Lettings Revenue':
-                return `£${value}`;
+                return <><PoundSymbol />{value}</>;
             default:
                 return `${value}`;
         }
@@ -285,7 +286,7 @@ const PerformanceTable_Teamleader = () => {
                                                     </span>
                                                 </td>
                                                 <td className="py-2 text-center">
-                                                    {kpiData.teamInfo.currency.replace('$', '£')}{kpi.opportunity.toFixed(1)}
+                                                    {kpiData.teamInfo.currency.replace('$', '')} <PoundSymbol />{kpi.opportunity.toFixed(1)}
                                                 </td>
                                                 <td className={`py-2 text-center ${kpi.gatekeeper ? 'text-black' : 'bg-gray-100'}`}>
                                                     {kpi.gatekeeper ? 'Yes' : 'N/A'}
